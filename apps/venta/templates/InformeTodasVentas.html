@@ -1,0 +1,80 @@
+{% extends "easy_pdf/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<style>
+    .titulo {
+                color: #154360;
+                font-size: 6;
+                text-align: center;
+                background-color: #BFC9CA;
+            }
+
+
+    .titulo2 {
+                color: #FFFFFF;
+                background-color: #154360;
+
+            }
+   
+    table {
+                border: 1px;
+                width: 100%;
+                border-collapse: collapse;
+                caption-side: center;
+                padding: 5px;
+                border: #BFC9CA 2px solid;
+                color: #154360;
+        }
+
+   .producto {
+
+                border: #BFC9CA 2px solid;
+                border-collapse: separate;
+                border-spacing: 20px 10px;
+                font-size: 4;
+                color: #154360;
+                height: 16;
+             }
+
+</style>
+    <title>INFORME</title>
+</head>
+<body>
+    <center>
+        <h1 class="titulo" >FARMACIA EMANUEL
+        <br> Camotan, Chiquimula        
+        </h1>
+        
+        <div>
+            <h1 class="titulo2">LISTADO DE PRODUCTOS VENDIDOS</h1>
+    <div>
+        
+    <table class="ventas">
+    <tr>
+        <th>Cantidad</th>
+        <th>Producto</th>
+        <th>Precio de Venta</th>
+        <th>Subtotal</th>
+    </tr>
+    {% for d1 in detalle %}
+ 
+        <td><center>{{ d1.cantidad }}</center></td>
+        <td><center>{{ d1.producto }}</center></td>
+        <td><center>{{ d1.pr }}</center></td>
+        <td><center>{{ d1.subtotal }}</center></td>
+        <tr>
+
+        {% endfor %}
+        <td colspan="3"><center>Total</center></td>
+        <td><center>{{ t }}</center></td>
+        </tr>
+        </tr>
+    </table>
+        </div>
+    </center>
+</body>
+</html>
+
+{% endblock %}

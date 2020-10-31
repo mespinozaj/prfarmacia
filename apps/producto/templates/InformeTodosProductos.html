@@ -1,0 +1,77 @@
+{% extends "easy_pdf/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<style>
+    .titulo {
+                color: #154360;
+                font-size: 6;
+                text-align: center;
+                background-color: #BFC9CA;
+            }
+
+    .titulo2 {
+                color: #FFFFFF;
+                background-color: #154360;
+            }
+   
+    table {
+                border: 1px;
+                width: 100%;
+                border-collapse: collapse;
+                caption-side: center;
+                padding: 5px;
+                border: #BFC9CA 2px solid;
+                color: #154360;
+        }
+    
+    @page{
+
+    size: legal landscape;
+    margin: 2cm;
+        }
+
+
+
+</style>
+    <title>INFORME</title>
+</head>
+<body>
+    <center>
+        <h1 class="titulo">FARMACIA EMANUEL
+        <br>Camotan, Chiquimula
+        </h1>
+        <div>
+            <h1 class="titulo2">LISTADO DE PRODUCTOS</h1>
+
+    <table class="productos">
+            <tr>
+                <th>Producto</th>
+                <th>Numero de lote</th>
+                <th>Cantidad</th>
+                <th>Precio de compra</th>
+                <th>Precio de venta</th>
+                <th>Fecha de vencimiento</th>
+                <th>Fecha de compra</th>
+                <th>Ubicacion</th>
+            </tr>
+             {% for d2 in detalle2 %}
+    <tr>
+        <td><center>{{ d2.producto }}</center></td>
+        <td><center>{{ d2.numeroloteproducto }}</center></td>
+        <td><center>{{ d2.cantidad }}</center></td>
+        <td><center>{{ d2.preciocompra }}</center></td>
+        <td><center>{{ d2.precioventa }}</center></td>
+        <td><center>{{ d2.fechavencimiento }}</center></td>
+        <td><center>{{ d2.fechacompra }}</center></td>
+        <td><center>{{ d2.ubicacion }}</center></td>
+    </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </center>
+</body>
+</html>
+
+{% endblock %}

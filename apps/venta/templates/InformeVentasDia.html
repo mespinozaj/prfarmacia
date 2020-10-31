@@ -1,0 +1,82 @@
+{% extends "easy_pdf/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<style>
+    .titulo {
+                color: #154360;
+                font-size: 6;
+                text-align: center;
+                background-color: #BFC9CA;
+            }
+
+
+    .titulo2 {
+                color: #FFFFFF;
+                background-color: #154360;
+
+            }
+   
+    .ventas {
+
+                border: #BFC9CA 2px solid;
+                border-collapse: separate;
+                border-spacing: 20px 10px;
+                font-size: 4;
+                color: #154360;
+                height: 16;
+             }
+    
+   .producto {
+
+                border: #BFC9CA 2px solid;
+                border-collapse: separate;
+                border-spacing: 20px 10px;
+                font-size: 4;
+                color: #154360;
+                height: 16;
+             }
+
+
+
+</style>
+    <title>INFORME</title>
+</head>
+<body>
+    <center>
+        <img src='..apps/venta/templates/LogoFarmacia2.png' class="img-fluid" width="250px" align="left"/>
+        <h1 class="titulo">FARMACIA EMANUEL
+        <br> Camotan, Chiquimula        
+        </h1>
+        
+        <div>
+            <h1 class="titulo2">LISTADO DE PRODUCTOS VENDIDOS DURANTE EL DIA</h1>
+    <div>
+        
+    <table class="ventas">
+    <tr>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Empleado</th>
+        <th>Total</th>
+    </tr>
+    {% for d1 in detalle %}
+        {% if d1.fecha == day %}
+            <td><center>{{ d1.fecha }}</center></td>
+            <td><center>{{ d1.cliente }}</center></td>
+            <td><center>{{ d1.empleado }}</center></td>
+            <td><center>{{ d1.total }}</center></td>
+            <tr>
+        {% endif %}
+    {% endfor %}
+        <td colspan="3"><center>Total</center></td>
+        <td><center>{{ t }}</center></td>
+        </tr>
+        </tr>
+    </table>
+        </div>
+    </center>
+</body>
+</html>
+{% endblock %}

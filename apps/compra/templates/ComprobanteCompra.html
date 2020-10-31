@@ -1,0 +1,122 @@
+{% extends "easy_pdf/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<style>
+    .titulo {
+                color: #154360;
+                font-size: 6;
+                text-align: center;
+                background-color: #BFC9CA;
+            }
+
+    .titulo2 {
+                color: #FFFFFF;
+                background-color: #154360;
+
+            }
+    .proveedor {
+
+                border: 1px;
+                width: 100%;
+                border-collapse: collapse;
+                caption-side: center;
+                padding: 5px;
+                border: #BFC9CA 2px solid;
+                color: #154360;
+             }
+
+    .titulo3 {
+                color: #FFFFFF;
+                background-color: #154360;
+
+    }
+    table {
+                border: 1px;
+                width: 100%;
+                border-collapse: collapse;
+                caption-side: center;
+                padding: 5px;
+                border: #BFC9CA 2px solid;
+                color: #154360;
+        }
+
+    @page{
+
+    size: legal landscape;
+    margin: 2cm;
+        }
+
+</style>
+	<title>COMPROBANTE</title>
+</head>
+<body>
+	<center>
+		<h1 class="titulo">FARMACIA EMANUEL
+        <br>Camotan, Chiquimula
+        </h1>
+		<div>
+			<h1 class="titulo2">COMPROBANTE DE COMPRA</h1>
+			<table class="proveedor">
+                <tr>
+                    <th>
+                        Proveedor:
+                    </th>
+                    
+                    <td >
+                        {{comprobantec.proveedor}}
+                    </td>             
+                </tr>
+                <tr>
+                    <th>
+                        Fecha:
+                    </th>
+                    
+                    <td >
+                        {{comprobantec.fecha}}
+                    </td>             
+                </tr>
+                <tr>
+                    <th>
+                        Total
+                    </th>
+                    
+                    <td >
+                        {{comprobantec.total}}
+                    </td>             
+                </tr>
+                </tr>
+            </table>
+            <h1 class="titulo3">Listado de Productos</h1>
+
+    <table class="producto">
+    <tr>
+        <th>Producto</th>
+        <th>Numer de lote</th>
+        <th>Cantidad</th>
+        <th>Fecha de vencimiento</th>
+        <th>Ubicacion</th>
+        <th>Precio de compra</th>
+        <th>Precio de venta</th>
+        <th>Subtotal</th>
+    </tr>
+    {% for d3 in detalle3 %}
+        <tr>
+        <td><center>{{ d3.producto }}</center></td>
+        <td><center>{{ d3.numeroloteproducto }}</center></td>
+        <td><center>{{ d3.cantidad }}</center></td>
+        <td><center>{{ d3.fechavencimiento }}</center></td>
+        <td><center>{{ d3.ubicacion }}</center></td>
+        <td><center>{{ d3.preciocompra }}</center></td>
+        <td><center>{{ d3.precioventa }}</center></td>
+        <td><center>{{ d3.subtotal }}</center></td>
+        </tr>
+        {% endfor %}
+    </table>
+		</div>
+	</center>
+</body>
+</html>
+
+{% endblock %}
